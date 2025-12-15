@@ -15,8 +15,8 @@
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-repo/nglog.git
-cd nglog
+git clone https://github.com/PFinal-tool/pf_nlog.git
+cd pf_nlog
 
 # 添加执行权限
 chmod +x nglog.sh
@@ -40,6 +40,26 @@ chmod +x nglog.sh
 ./nglog.sh -p top_ip /var/log/nginx/access.log
 ```
 
+### HTML报告功能
+
+```bash
+# 生成单个插件的HTML报告
+./nglog.sh -p security -o security_report.html /var/log/nginx/access.log
+
+# 生成完整分析报告（所有插件）
+./nglog.sh -a -o full_report.html /var/log/nginx/access.log
+
+# 运行所有插件（控制台输出）
+./nglog.sh -a /var/log/nginx/access.log
+```
+
+**HTML报告特点：**
+- 响应式设计，适配各种设备
+- 专业美观的CSS样式
+- 导航菜单，快速跳转不同分析模块
+- 时间戳和文件信息显示
+- 完整的分析结果格式化展示
+
 ### 插件使用示例
 
 ```bash
@@ -60,6 +80,15 @@ chmod +x nglog.sh
 
 # 安全分析和异常检测
 ./nglog.sh -p security /var/log/nginx/access.log
+
+# 增强版IP分析（国家分布+爬虫判定）
+./nglog.sh -p top_ip_enhanced /var/log/nginx/access.log
+
+# 用户行为评分分析
+./nglog.sh -p behavior_score /var/log/nginx/access.log
+
+# 运行所有插件生成完整报告
+./nglog.sh -a /var/log/nginx/access.log
 ```
 
 ## 🔌 可用插件
@@ -67,11 +96,13 @@ chmod +x nglog.sh
 | 插件名称 | 功能描述 | 版本 |
 |---------|---------|------|
 | `top_ip` | 统计访问量最高的IP地址 | 0.1 |
+| `top_ip_enhanced` | 增强版IP分析：国家分布和爬虫判定 | 0.2 |
 | `status_code` | 分析HTTP状态码分布情况 | 0.1 |
 | `request_url` | 统计最常访问的URL | 0.1 |
 | `user_agent` | 分析用户代理和浏览器信息 | 0.1 |
 | `traffic` | 流量和带宽使用情况分析 | 0.1 |
 | `security` | 安全威胁和异常访问检测 | 0.1 |
+| `behavior_score` | 用户行为评分分析 - 识别可疑和恶意行为 | 0.2 |
 
 ## ⚙️ 配置说明
 
